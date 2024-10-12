@@ -5,12 +5,13 @@
 # ------------------------------------------------------
 from typing import Any, Callable, Dict, Optional, Union, overload
 
-from reflex.components import Component
+import reflex as rx
 from reflex.event import EventHandler, EventSpec
 from reflex.style import Style
+from reflex.utils.types import Optional
 from reflex.vars.base import Var
 
-class EmailComponent(Component):
+class EmailComponent(rx.Component):
     @overload
     @classmethod
     def create(  # type: ignore
@@ -131,7 +132,6 @@ class Html(EmailComponent):
 
         Args:
             *children: The children of the component.
-            lang: Define props with correct typing
             style: The style of the component.
             key: A unique key for the component.
             id: The id for the component.
@@ -197,20 +197,441 @@ class Button(EmailComponent):
         ] = None,
         **props,
     ) -> "Button":
-        """Create a new button component.
+        """Create the Link component.
 
         Args:
-            *children: Child components (used for text content)
-            href: Define all possible props
+            *children: The children components or elements (e.g., text).
             style: The style of the component.
             key: A unique key for the component.
             id: The id for the component.
             class_name: The class name for the component.
             autofocus: Whether the component should take the focus once the page is loaded
             custom_attrs: custom attribute
-            **props: Button properties
+            **props: Props such as `href` and `target`.
 
         Returns:
-            A new Button component
+            Link component with provided props and children.
+        """
+        ...
+
+class Link(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        href: Optional[Union[Var[str], str]] = None,
+        target: Optional[Union[Var[str], str]] = None,
+        text: Optional[Union[Var[str], str]] = None,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Link":
+        """Create the Link component.
+
+        Args:
+            *children: The children components or elements (e.g., text).
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: Props such as `href` and `target`.
+
+        Returns:
+            Link component with provided props and children.
+        """
+        ...
+
+class Text(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Text":
+        """"""
+        ...
+
+class Image(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        alt: Optional[Union[Var[str], str]] = None,
+        src: Optional[Union[Var[str], str]] = None,
+        width: Optional[Union[Var[str], str]] = None,
+        height: Optional[Union[Var[str], str]] = None,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Image":
+        """"""
+        ...
+
+class Head(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Head":
+        """Create the component.
+
+        Args:
+            *children: The children of the component.
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: The props of the component.
+
+        Returns:
+            The component.
+        """
+        ...
+
+class Container(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Container":
+        """"""
+        ...
+
+class Hr(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Hr":
+        """"""
+        ...
+
+class Heading(EmailComponent):
+    @overload
+    @classmethod
+    def create(  # type: ignore
+        cls,
+        *children,
+        as_: Optional[Union[Var[str], str]] = None,
+        m: Optional[Union[Var[str], str]] = None,
+        mx: Optional[Union[Var[str], str]] = None,
+        my: Optional[Union[Var[str], str]] = None,
+        mt: Optional[Union[Var[str], str]] = None,
+        mr: Optional[Union[Var[str], str]] = None,
+        mb: Optional[Union[Var[str], str]] = None,
+        ml: Optional[Union[Var[str], str]] = None,
+        text: Optional[Union[Var[str], str]] = None,
+        style: Optional[Style] = None,
+        key: Optional[Any] = None,
+        id: Optional[Any] = None,
+        class_name: Optional[Any] = None,
+        autofocus: Optional[bool] = None,
+        custom_attrs: Optional[Dict[str, Union[Var, str]]] = None,
+        on_blur: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_click: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_context_menu: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_double_click: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_focus: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mount: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_mouse_down: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_enter: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_leave: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_move: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_out: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_over: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_mouse_up: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        on_scroll: Optional[Union[EventHandler, EventSpec, list, Callable, Var]] = None,
+        on_unmount: Optional[
+            Union[EventHandler, EventSpec, list, Callable, Var]
+        ] = None,
+        **props,
+    ) -> "Heading":
+        """Create the Heading component.
+
+        Args:
+            *children: Children components or elements.
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: Props such as `as_`, `m`, `mx`, `my`, etc.
+
+        Returns:
+            Heading component with provided props and children.
         """
         ...
