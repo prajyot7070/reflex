@@ -128,20 +128,20 @@ class Html(EmailComponent):
         ] = None,
         **props,
     ) -> "Html":
-        """Create the component.
+        """Create the Html component.
 
         Args:
-            *children: The children of the component.
+            *children: The child elements for the Html tag.
             style: The style of the component.
             key: A unique key for the component.
             id: The id for the component.
             class_name: The class name for the component.
             autofocus: Whether the component should take the focus once the page is loaded
             custom_attrs: custom attribute
-            **props: The props of the component.
+            **props: Properties such as `lang`, `dir`, and any custom styles.
 
         Returns:
-            The component.
+            Html component.
         """
         ...
 
@@ -266,20 +266,20 @@ class Link(EmailComponent):
         ] = None,
         **props,
     ) -> "Link":
-        """Create the Link component.
+        """Create a Link component.
 
         Args:
-            *children: The children components or elements (e.g., text).
+            *children: The text or elements to display as the link content.
             style: The style of the component.
             key: A unique key for the component.
             id: The id for the component.
             class_name: The class name for the component.
             autofocus: Whether the component should take the focus once the page is loaded
             custom_attrs: custom attribute
-            **props: Props such as `href` and `target`.
+            **props: Properties such as 'href', 'target', and styles for customizing the appearance of the link.
 
         Returns:
-            Link component with provided props and children.
+            A Link component with a clickable URL.
         """
         ...
 
@@ -388,7 +388,21 @@ class Image(EmailComponent):
         ] = None,
         **props,
     ) -> "Image":
-        """"""
+        """Create an Image component.
+
+        Args:
+            *children: Optional child components to render alongside the image.
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: Properties such as 'src', 'alt', 'width', 'height', and 'style' for customizing the image.
+
+        Returns:
+            An Image component for embedding pictures in emails.
+        """
         ...
 
 class Head(EmailComponent):
@@ -506,7 +520,21 @@ class Container(EmailComponent):
         ] = None,
         **props,
     ) -> "Container":
-        """"""
+        """Create a Container component.
+
+        Args:
+            *children: Child components to wrap inside the container.
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: Additional properties like 'style' for customizing layout, padding, and alignment.
+
+        Returns:
+            A Container component for organizing content.
+        """
         ...
 
 class Hr(EmailComponent):
@@ -558,7 +586,21 @@ class Hr(EmailComponent):
         ] = None,
         **props,
     ) -> "Hr":
-        """"""
+        """Create a Hr component.
+
+        Args:
+            *children: Optional child components, though usually none are used for this component.
+            style: The style of the component.
+            key: A unique key for the component.
+            id: The id for the component.
+            class_name: The class name for the component.
+            autofocus: Whether the component should take the focus once the page is loaded
+            custom_attrs: custom attribute
+            **props: Properties for customizing the appearance of the horizontal line, like 'style'.
+
+        Returns:
+            A Hr component to create a horizontal rule in the email content.
+        """
         ...
 
 class Heading(EmailComponent):
